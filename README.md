@@ -16,15 +16,16 @@
 - Navigate to sbin folder inside `..\RabbitMQ Server\rabbitmq_server-3.7.17\sbin` and open cmd there
 - Execute the above command on cmd
 `rabbitmq-plugins enable rabbitmq_management`
+![command](Screenshots/command.PNG)
 - Restart RabbitMQ server
 `Search for 'Rabbitmq service - stop' and for 'Rabbitmq service -start' to restart your server`
 - Restart your browser
 - Go to [RabbitMQ Management Page](http://localhost:15672)
 - You should see the above page:
-![image]()
+![rabbit_management_page](Screenshots/rabbit_management_page.PNG)
 - RabbitMQ default credentials:
 `Username: guest | Password: guest`
-![image]()
+![home_rabbit_screen](Screenshots/home_rabbit_screen.PNG)
 
 ## Setting Up RabbitMQ
 
@@ -84,6 +85,7 @@ Arguments: Leave it empty
 - Right click on Solution 'SaleOrder.RabbitMq' -> Properties (or Alt + Enter)
 - Expand the Common Properties node and choose Startup Project.
 - Choose the Multiple Startup Projects option.
+![config](Screenshots/config.PNG)
 - Mark SaleOrder.RabbitMq.Email, SaleOrder.RabbitMq.Error, SaleOrder.RabbitMq.Log, SaleOrder.RabbitMq.Order as "Start".
 - Run the project -> Ctrl + F5 or F5 to debug
 - Wait Visual Studio to compile the project
