@@ -91,5 +91,10 @@ Arguments: Leave it empty
 - Wait Visual Studio to compile the project
 - The project should be running without problems.
 
+## Editing default project variables
+- Go to file `ConfigurationRepository.cs` inside `SaleOrder.RabbitMq.Infra\Repository`
+- Change `Exchange` to your new name (Remember this must be the same name as the Exchange you created before on RabbitMQ!)
+- Change the return string for each type inside `GetRoutingKey` method (Remember this must be the same name as the Queues/Routing Keys you created before on RabbitMQ).
+
 ## Contact
 - If you need to contact me send me a email `xr.emerson@gmail.com`
