@@ -14,7 +14,6 @@ namespace SaleOrder.RabbitMq.Infra.Rabbit
         {
             this.connection = connection;
         }
-        //Sender generico passar type por parametro
         public void Add(string message, QueueType type)
         {
             if (!string.IsNullOrEmpty(message))

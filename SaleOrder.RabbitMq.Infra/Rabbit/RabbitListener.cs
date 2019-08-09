@@ -9,16 +9,14 @@ namespace SaleOrder.RabbitMq.Infra.Rabbit
 {
     public class RabbitListener : IRabbitListener
     {
-        private IRabbitConnection<IModel> connection;
         private IModel channel;
         private IConfigurationRepository configuration;
         private int count = 0;
 
         public RabbitListener(IRabbitConnection<IModel> connection)
         {
-            this.connection = connection;
-            channel = this.connection.Channel;
-            configuration = this.connection.Configuration;
+            channel = connection.Channel;
+            configuration = connection.Configuration;
         }
 
 
@@ -44,12 +42,17 @@ namespace SaleOrder.RabbitMq.Infra.Rabbit
 
             count++;
 
+            //This if-else is only for forcing an error to test dead letter
+            //Delete this if-else for a complete generic listener
+
             if (count % 3 == 0 && type == QueueType.Email)
             {
+               //Rejects message, if dead letter is configured it will be send to it
                 channel.BasicNack(eventArgs.DeliveryTag, false, false);
             }
             else
             {
+                //Executes callback and removes it from queue with success status
                 action(message);
                 channel.BasicAck(eventArgs.DeliveryTag, false);
             }
